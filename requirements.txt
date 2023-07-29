@@ -12,4 +12,5 @@ python-dateutil==2.8.2
 pytz==2023.3
 seaborn==0.12.2
 six==1.16.0
+sklearn==0.0.post7
 tzdata==2023.3
