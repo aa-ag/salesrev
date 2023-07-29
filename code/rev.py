@@ -68,7 +68,12 @@ def create_linear_regression_model(data):
     x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=1)
     linear_regression = LinearRegression()
     linear_regression.fit(x_train, y_train)
-    print(linear_regression.coef_)
+    return linear_regression
+
+
+def calculate_intercept_and_coefficient(linear_regression):
+    print(f"Intercept: {round(linear_regression.intercept_, 2)}")
+    print(f"Coefficient: {round(linear_regression.coef_[0], 2)}")
 
 
 # ------------ DRIVER CODE ------------##############################ß
@@ -79,4 +84,5 @@ if __name__ == "__main__":
         # initial_analysis(data)
         # explore_predictor_response_relationship(data)
         # plot_correlations(data)
-        create_linear_regression_model(data)
+        linear_regression = create_linear_regression_model(data)
+        calculate_intercept_and_coefficient(linear_regression)
