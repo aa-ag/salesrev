@@ -4,12 +4,14 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 from matplotlib import pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
 
 
 ############ ------------ FUNCTION(S) ------------##############################
 def test_env():
     # TODO: this will be moved to "tests" eventually
-    pckgs = ["pandas", "numpy", "matplotlib", "seaborn"]
+    pckgs = ["pandas", "numpy", "matplotlib", "seaborn", "sklearn"]
     print("\n")
     for pckg in pckgs:
         spec = u.find_spec(pckg)
@@ -32,7 +34,7 @@ def check_inputs():
 def clean_inputs():
     df = pd.read_csv("files/advertising.csv")
     df.drop(["N"], axis=1, inplace=True)
-    return df.head()
+    return df
 
 
 def initial_analysis(data):
@@ -60,6 +62,15 @@ def plot_correlations(data):
     plt.show()
 
 
+def create_linear_regression_model(data):
+    x = data[["TV"]]
+    y = data.sales
+    x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=1)
+    linear_regression = LinearRegression()
+    linear_regression.fit(x_train, y_train)
+    print(linear_regression.coef_)
+
+
 # ------------ DRIVER CODE ------------##############################ß
 if __name__ == "__main__":
     if test_env():
@@ -67,4 +78,5 @@ if __name__ == "__main__":
         data = clean_inputs()
         # initial_analysis(data)
         # explore_predictor_response_relationship(data)
-        plot_correlations(data)
+        # plot_correlations(data)
+        create_linear_regression_model(data)
