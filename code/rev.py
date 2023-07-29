@@ -55,7 +55,9 @@ def explore_predictor_response_relationship(data):
 
 
 def plot_correlations(data):
-    print(data.corr())
+    # print(data.corr())
+    sns.heatmap(data.corr(), annot=True)
+    plt.show()
 
 
 # ------------ DRIVER CODE ------------##############################ß
