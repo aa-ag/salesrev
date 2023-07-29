@@ -14,7 +14,7 @@ def test_env():
     for pckg in pckgs:
         spec = u.find_spec(pckg)
         if spec is None:
-            print(f'"{pckg}" is not installed')
+            print(f'{pckg} is not installed')
             return False
         else:
             continue
@@ -43,15 +43,19 @@ def initial_analysis(data):
 
 
 def explore_predictor_response_relationship(data):
-    sns.pairplot(
+    fig = sns.pairplot(
         data,
         x_vars=["TV", "radio", "newspaper"],
         y_vars="sales",
-        height=7,
-        aspect=1,
+        height=4,
+        aspect=0.5,
         kind="reg"
     )
-    plt.show()
+    fig.savefig("./files/predictor_response_relationship_plot.png")
+
+
+def plot_correlations(data):
+    print(data.corr())
 
 
 # ------------ DRIVER CODE ------------##############################ß
@@ -60,4 +64,5 @@ if __name__ == "__main__":
         # check_inputs()
         data = clean_inputs()
         # initial_analysis(data)
-        explore_predictor_response_relationship(data)
+        # explore_predictor_response_relationship(data)
+        plot_correlations(data)
