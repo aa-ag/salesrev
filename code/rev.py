@@ -23,6 +23,14 @@ def test_env():
     return True
 
 
+def check_inputs():
+    df = pd.read_csv("inputs/advertising.csv")
+    print(df.info(verbose=True))
+    print(df.describe())
+    print(df.head(5))
+
+
 # ------------ DRIVER CODE ------------##############################ß
 if __name__ == "__main__":
-    test_env()
+    if test_env():
+        check_inputs()
