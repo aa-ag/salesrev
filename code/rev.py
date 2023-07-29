@@ -1,16 +1,13 @@
 ############ ------------ IMPORTS ------------##################################
-import importlib.util as u
 import pandas as pd
 import numpy as np
+import seaborn as sns
 from matplotlib import pyplot as plt
-
-
-############ ------------ GLOBAL VARIABLE(S) ------------#######################
 
 
 ############ ------------ FUNCTION(S) ------------##############################
 def test_env():
-    pckgs = ["pandas", "numpy", "matplotlib"]
+    pckgs = ["pandas", "numpy", "matplotlib", "sns"]
     print("\n")
     for pckg in pckgs:
         spec = u.find_spec(pckg)
