@@ -9,15 +9,20 @@ from matplotlib import pyplot as plt
 
 
 ############ ------------ FUNCTION(S) ------------##############################
-
-
-# ------------ DRIVER CODE ------------##############################ß
-if __name__ == "__main__":
+def test_env():
     pckgs = ["pandas", "numpy", "matplotlib"]
     print("\n")
     for pckg in pckgs:
         spec = u.find_spec(pckg)
         if spec is None:
             print(f'"{pckg}" is not installed')
+            return False
         else:
-            print(f'"{pckg}" is installed')
+            continue
+            # print(f'"{pckg}" is installed')
+    return True
+
+
+# ------------ DRIVER CODE ------------##############################ß
+if __name__ == "__main__":
+    test_env()
