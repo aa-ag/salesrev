@@ -30,7 +30,14 @@ def check_inputs():
     print(df.head(5))
 
 
+def clean_inputs():
+    df = pd.read_csv("inputs/advertising.csv")
+    df.drop(["Unnamed: 0"], axis=1, inplace=True)
+    print(df.head())
+
+
 # ------------ DRIVER CODE ------------##############################ß
 if __name__ == "__main__":
     if test_env():
-        check_inputs()
+        # check_inputs()
+        clean_inputs()
