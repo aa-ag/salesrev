@@ -35,9 +35,10 @@ def clean_inputs():
 
 
 def analyse(data):
-    # plt.show()
-    fig = sns.displot(data.Sales, kind="kde")
-    fig.savefig("./files/sales_plot.png")
+    dataframe_columns = data.columns.to_list()
+    for each_column in dataframe_columns:
+        fig = sns.displot(data[each_column], kind="kde")
+        fig.savefig(f"./files/{each_column}_plot.png")
 
 
 # ------------ DRIVER CODE ------------##############################ß
